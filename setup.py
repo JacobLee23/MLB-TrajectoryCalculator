@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="MLB-TrajectoryCalculator",
-    version="0.0.2",
+    version="0.0.3",
     author="Jacob Lee",
     author_email="JLpython@outlook.com",
     description="A package containing utilities for calculating MLB ball trajectories",
