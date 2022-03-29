@@ -17,14 +17,14 @@ def get_soup(url: str) -> bs4.BeautifulSoup:
     :param url:
     :return:
     """
-    res = requests.get(url)
-    logger.debug("Response (%s): %d", res.url, res.status_code)
+    _res = requests.get(url)
+    logger.debug("Response (%s): %d", _res.url, _res.status_code)
 
-    soup = bs4.BeautifulSoup(res.text, features="lxml")
-    return soup
+    _soup = bs4.BeautifulSoup(_res.text, features="lxml")
+    return _soup
 
 
-def _soup(url: str) -> typing.Callable:
+def soup(url: str) -> typing.Callable:
     """
 
     """
@@ -36,9 +36,9 @@ def _soup(url: str) -> typing.Callable:
             """
 
             """
-            soup = get_soup(url)
-            res = func(soup, *args, **kwargs)
-            return res
+            _soup = get_soup(url)
+            _res = func(_soup, *args, **kwargs)
+            return _res
 
         return wrapper
 
