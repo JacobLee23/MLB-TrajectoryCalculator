@@ -2,7 +2,20 @@
 
 """
 
+
+import os
+from pkg_resources import DistributionNotFound
 from pkg_resources import get_distribution
 
 
-__version__ = get_distribution("MLB-TrajectoryCalculator").version
+try:
+    _dist = get_distribution("MLB-TrajectoryCalculator")
+
+    dist_loc = os.path.normcase(_dist.location)
+    here = os.path.normcase(__file__)
+    if not here.startswith(os.path.join(dist_loc, "MLB-TrajectoryCalculator")):
+        raise DistributionNotFound
+except DistributionNotFound:
+    __version__ = "Please install this project with setup.py"
+else:
+    __version__ = _dist.version
